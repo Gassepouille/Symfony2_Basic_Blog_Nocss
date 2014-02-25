@@ -1,0 +1,15 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: Chadodb
+    database_user: root
+    database_password: null
+    mailer_transport: smtp
+    mailer_host: smtp.mandrillapp.com
+    mailer_user: machinchoseformation@gmail.com
+    mailer_password: Hjdczdp7lFCIcd1z8IoTCg
+    mailer_port: 587
+    locale: en
+    secret: ThisTokenIsNotSoSecretChangeIt

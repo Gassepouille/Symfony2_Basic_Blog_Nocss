@@ -1,0 +1,26 @@
+{% for commentaire in comments_list %}
+	{% if not commentaire.getParent %}
+		<div class="single-comment">
+			<h6>{{commentaire.getUser.Nickname}}</h6>
+			<p>{{commentaire.content}}</p>
+
+			<p><span>{{commentaire.date.date}}</span></p>
+			
+			<div class="reply-comment" value="{{commentaire.id}}">Reply</div>
+		
+			{% for commentaire2 in comments_list %}
+			    	{% if commentaire2.getParent %}
+			    		{% if commentaire2.getParent.Id==commentaire.Id %}
+							<div class="reply-disp">
+								<h6>{{commentaire2.getUser.Nickname}}</h6>
+								<p>{{commentaire2.content}}</p>
+
+								<p><span>{{commentaire2.date.date}}</span></p>
+								
+							</div>
+						{% endif %}
+					{%  endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endfor %}

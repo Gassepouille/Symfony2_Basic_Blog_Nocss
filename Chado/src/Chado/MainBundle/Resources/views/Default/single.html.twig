@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+	<a href="{{path('chado_main_index')}}">Index</a>
+	{% if app.user %}
+	    <a href="{{path('chado_main_logout')}}">Logout</a>
+	{% else %}
+	    <a href="{{path('chado_main_login')}}">Login</a>
+	    <a href="{{path('chado_main_register')}}">Register</a>
+	{% endif %}
+
+	<div id="article">
+		<h3>{{article.title}}</h3>
+
+		<div class="contenu">{{article.content|raw}}</div>
+
+		<p><span>{{article.date.date}}</span></p>
+	</div>
+	{% if app.user %}
+		<div id="commentaires">
+			<h3>Comments</h3>
+			
+				{% include "ChadoMainBundle:includes:commentinc.html.twig" %}
+
+			
+			<div>
+				<div class="reply-comment" value="null">Comment !</div>
+				<div id="createcomment">
+					{{ form(comment_form) }}
+				</div>
+			</div>
+		</div>
+	{% endif %}
+{% endblock body %}
+{% block javascripts %}
+	<script type="text/javascript" src="{{asset('js/jquery-2.0.3.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/reply.js')}}"></script>
+{% endblock %}

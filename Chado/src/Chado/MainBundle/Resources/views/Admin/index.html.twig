@@ -1,0 +1,38 @@
+{% extends "::adminbase.html.twig" %}
+
+{% block body %}
+	<h6>Admin</h6>
+	<a href="{{path('chado_main_admincreate')}}">Create Article</a>
+	<a href="{{path('chado_main_admintaglist')}}">TagList</a>
+
+	<h6>Article list</h6>
+	<table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Toggle status</th>
+                <th>Edit</th>
+                <th>Comments</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles_list %}
+			<tr>
+                <td>{{article.title}}</td>
+                <td>{{article.date.date}}</td>
+                {% if article.online==0 %}
+               		<td><a href="{{path('chado_main_adminstatus',{id:article.id, status:1})}}" ><button type="button">Set live</button></a></td>
+                {% else %}
+               		<td><a href="{{path('chado_main_adminstatus',{id:article.id, status:0})}}" ><button type="button">Set off</button></a></td>
+                {% endif %}
+
+                <td><a href="{{path('chado_main_admincreate',{id:article.id})}}" ><button type="button">Edit</button></a></td>
+                <td><a href="{{path('chado_main_admincomments',{id:article.id})}}" ><button type="button">comments</button></a></td>
+                <td><a href="{{path('chado_main_admindelete',{id:article.id})}}" ><button type="button">Delete</button></a></td>
+            </tr>
+		{% endfor %}
+        </tbody>
+    </table>
+{% endblock body %}

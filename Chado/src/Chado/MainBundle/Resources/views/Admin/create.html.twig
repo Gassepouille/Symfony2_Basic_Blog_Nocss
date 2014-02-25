@@ -1,0 +1,24 @@
+{% extends "::adminbase.html.twig" %}
+
+{% block body %}
+<a href="{{path('chado_main_admin')}}">Admin home</a>
+	{{ form(article_form) }}
+{% endblock body %}
+
+
+{% block javascripts %}
+	<script type="text/javascript">
+		var menuUrl = "{{ asset('lib/nicedit/') }}";
+	</script>
+	<script type="text/javascript" src="{{asset('lib/jquery-2.0.3.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('lib/nicedit/nicEdit.js')}}"></script>
+	<script type="text/javascript">
+		
+		var area = new nicEditor({fullPanel : true}).panelInstance('chado_mainbundle_chadoarticle_content');
+		$("body").on("click", "#chado_mainbundle_chadoarticle_save", function(){
+			$("#chado_mainbundle_chadoarticle_content").html($(".nicEdit-main").html())
+		})
+		
+		
+	</script>
+{% endblock %}

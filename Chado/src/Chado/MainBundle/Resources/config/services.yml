@@ -1,0 +1,7 @@
+parameters:
+#    chado_main.example.class: Chado\MainBundle\Example
+
+services:
+#    chado_main.example:
+#        class: %chado_main.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,24 @@
+{% extends "::adminbase.html.twig" %}
+
+{% block body %}
+	<a href="{{path('chado_main_admin')}}">Admin home</a>
+	<h6>Admin Comments {{article_name}}</h6>
+	<table>
+		<thead>
+	        <tr>
+	            <th>content</th>
+	            <th>author</th>
+	            <th>delete</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    {% for comment in comments_list %}
+			<tr>
+	            <td>{{comment.content}}</td>
+	            <td>{{comment.User.nickname}}</td>
+	            <td><a href="{{path('chado_main_admincomdel',{id:comment.id,article_id:artid})}}"><button>Delete</button></a></td>
+	        </tr>
+		{% endfor %}
+	    </tbody>
+    </table>
+{% endblock body %}

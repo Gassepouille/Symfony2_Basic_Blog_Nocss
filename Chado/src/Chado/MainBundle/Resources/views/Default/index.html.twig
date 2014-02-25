@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+   	{% if app.user %}
+	    <a href="{{path('chado_main_logout')}}">Logout</a>
+	{% else %}
+	    <a href="{{path('chado_main_login')}}">Login</a>
+	    <a href="{{path('chado_main_register')}}">Register</a>
+	    <a href="{{path('chado_main_forgot')}}">Forgot pass ?</a>
+	{% endif %}
+	<br><br>
+	{% for tag in tags_list %}
+		<a href="{{path('chado_main_index',{filter:tag.tagname})}}">{{tag.tagname}}</a>
+	{% endfor %}
+	    <a href="{{path('chado_main_index',{filter:null})}}">All articles</a>
+	{% for article in articles_list %}
+		{% if article.online!=0 %}
+			<a href="{{path('chado_main_single',{id:article.id})}}">
+				<h4>{{article.title}}</h4>
+				<p><span>{{article.date.date}}</span> &nbsp;<span> {{ article.comments|length }}commentaire(s)</span></p>
+			</a>
+
+        {% endif %}   
+	{% endfor %}
+{% if prev!=-1 %}
+<a href="{{path('chado_main_index',{page:prev,filter:filter})}}">Previous</a>
+{% endif %}
+{% if next!=-1 %}
+<a href="{{path('chado_main_index',{page:next,filter:filter})}}">Next</a>
+{% endif %}
+
+{% endblock body %}

@@ -1,0 +1,29 @@
+security:
+    firewalls:
+        secured_area:
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                login_path:  chado_main_login
+                check_path:  chado_main_login_check
+            logout:
+                path:   /logout
+                target: /
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000 # 365 days in seconds
+                path:     /
+                domain:   ~ # Defaults to the current domain from $_SERVER
+
+    providers:
+        users:
+            entity: { class: ChadoMainBundle:ChadoUser, property: nickname }
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
+    encoders:
+        Chado\MainBundle\Entity\ChadoUser:
+            algorithm: sha512
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER

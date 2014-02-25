@@ -1,0 +1,6 @@
+{% extends "::adminbase.html.twig" %}
+
+{% block body %}
+<a href="{{path('chado_main_admintaglist')}}">Tag list</a>
+	{{ form(tag_form) }}
+{% endblock body %}

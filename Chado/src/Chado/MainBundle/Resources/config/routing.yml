@@ -1,0 +1,51 @@
+chado_main_index:
+    pattern:  /{page}/{filter}
+    defaults: { _controller: ChadoMainBundle:Default:index, page:0,filter:null }
+    requirements:
+        page: \d+
+chado_main_single:
+    pattern:  /single/{id}/
+    defaults: { _controller: ChadoMainBundle:Default:single }
+chado_main_search:
+    pattern:  /search/{kw}
+    defaults: { _controller: ChadoMainBundle:Default:search }
+chado_main_login:
+    pattern:  /login/
+    defaults: { _controller: ChadoMainBundle:Userfunc:login }
+chado_main_login_check:
+    pattern:  /login_check/
+chado_main_logout:
+    pattern:  /logout
+chado_main_register:
+    pattern:  /register/
+    defaults: { _controller: ChadoMainBundle:Userfunc:register }
+chado_main_forgot:
+    pattern:  /forgot/
+    defaults: { _controller: ChadoMainBundle:Userfunc:forgot }
+chado_main_resetpass:
+    pattern:  /resetpass/{token}
+    defaults: { _controller: ChadoMainBundle:Userfunc:resetpass }
+chado_main_admin:
+    pattern:  /admin/
+    defaults: { _controller: ChadoMainBundle:Admin:index }
+chado_main_admincreate:
+    pattern:  /admin/create/{id}
+    defaults: { _controller: ChadoMainBundle:Admin:create, id:0 }
+chado_main_adminstatus:
+    pattern:  /admin/status/{id}/{status}
+    defaults: { _controller: ChadoMainBundle:Admin:status }
+chado_main_admindelete:
+    pattern:  /admin/delete/{id}
+    defaults: { _controller: ChadoMainBundle:Admin:delete }
+chado_main_admincreatetag:
+    pattern:  /admin/createtag/
+    defaults: { _controller: ChadoMainBundle:Admin:createTag }
+chado_main_admintaglist:
+    pattern:  /admin/taglist/
+    defaults: { _controller: ChadoMainBundle:Admin:tagList }
+chado_main_admincomments:
+    pattern:  /admin/comments/{id}
+    defaults: { _controller: ChadoMainBundle:Admin:commentsList }
+chado_main_admincomdel:
+    pattern:  /admin/comdel/{id}/{article_id}
+    defaults: { _controller: ChadoMainBundle:Admin:deletecom }

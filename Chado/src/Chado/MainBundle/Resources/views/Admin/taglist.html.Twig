@@ -1,0 +1,21 @@
+{% extends "::adminbase.html.twig" %}
+
+{% block body %}
+	<a href="{{path('chado_main_admin')}}">Admin home</a>
+	<a href="{{path('chado_main_admincreatetag')}}">Create tag</a>
+	<h6>Admin taglist</h6>
+	<table>
+		<thead>
+	        <tr>
+	            <th>Tagname</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    {% for tag in tags_list %}
+			<tr>
+	            <td>{{tag.Tagname}}</td>
+	        </tr>
+		{% endfor %}
+	    </tbody>
+    </table>
+{% endblock body %}

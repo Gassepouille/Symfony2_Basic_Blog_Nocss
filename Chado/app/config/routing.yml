@@ -1,0 +1,4 @@
+chado_main:
+    resource: "@ChadoMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
